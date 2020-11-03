@@ -9,5 +9,9 @@ namespace backend_digital_home.Core.DataProviders
         Task<IEnumerable<IMovie>> GetAllMovies();
 
         Task<IMovie> GetMovieById(int id);
+
+        Task<IEnumerable<IMovie>> GetMoviesByGenre(string genreName);
+
+        Task<IEnumerable<IGenre>> GetGenresForMovie(int movieId);
     }
 }

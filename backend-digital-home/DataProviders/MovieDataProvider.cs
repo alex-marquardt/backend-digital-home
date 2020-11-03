@@ -33,15 +33,42 @@ namespace backend_digital_home.DataProviders
         }
 
         // Get a movie by id
-        public async Task<IMovie> GetMovieById(int id)
+        public async Task<IMovie> GetMovieById(int movieId)
         {
             using (var conn = new SqlConnection(_connectionHelper.GetConnectionString()))
             {
                 conn.Open();
                 DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Id", id);
+                parameters.Add("@Id", movieId);
 
                 return await conn.QueryFirstOrDefaultAsync<Movie>("SelectMovieById", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        // Get movies with a genre name
+        public async Task<IEnumerable<IMovie>> GetMoviesByGenre(string genreName)
+        {
+            using (var conn = new SqlConnection(_connectionHelper.GetConnectionString()))
+            {
+                conn.Open();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Name", genreName);
+
+                return conn.Query<Movie>("SelectMoviesByGenre", parameters, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+
+        //Get genres for a movie
+        public async Task<IEnumerable<IGenre>> GetGenresForMovie(int movieId) 
+        {
+            using (var conn = new SqlConnection(_connectionHelper.GetConnectionString()))
+            {
+                conn.Open();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@MovieId", movieId);                
+
+                return conn.Query<Genre>("SelectGenresForMovie", parameters, commandType: CommandType.StoredProcedure).ToList();                
             }
         }
     }

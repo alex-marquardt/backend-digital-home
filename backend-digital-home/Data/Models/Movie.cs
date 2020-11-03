@@ -1,4 +1,5 @@
 ﻿using backend_digital_home.Core.Models;
+using System.Collections.Generic;
 
 namespace backend_digital_home.Data.Models
 {
@@ -10,5 +11,6 @@ namespace backend_digital_home.Data.Models
         public int AgeLimit { get; set; }
         public int ReleaseYear { get; set; }
         public string Plot { get; set; }
+        public List<string> genres { get; set; }
     }
 }

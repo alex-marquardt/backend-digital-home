@@ -1,4 +1,6 @@
-﻿namespace backend_digital_home.Core.Models
+﻿using System.Collections.Generic;
+
+namespace backend_digital_home.Core.Models
 {
     public interface IMovie
     {
@@ -8,5 +10,6 @@
         int AgeLimit { get; set; }
         int ReleaseYear { get; set; }
         string Plot { get; set; }
+        List<string> genres { get; set; }
     }
 }

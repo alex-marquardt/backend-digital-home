@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using backend_digital_home.Core.DataProviders;
 using backend_digital_home.Core.Managers;
@@ -18,6 +16,7 @@ namespace backend_digital_home.Managers
             _movieDataProvider = movieDataProvider;
         }
 
+        // Get all movies
         public async Task<IEnumerable<IMovie>> GetAllMovies()
         {
             List<IMovie> movies = new List<IMovie>();
@@ -30,6 +29,7 @@ namespace backend_digital_home.Managers
             return movies;
         }
 
+        // Get a movie by id
         public async Task<IMovie> GetMovieById(int id)
         {
             IMovie movie = await _movieDataProvider.GetMovieById(id);
@@ -37,7 +37,8 @@ namespace backend_digital_home.Managers
 
             return movie;
         }
-
+        
+        // Get movies with a genre name
         public async Task<IEnumerable<IMovie>> GetMoviesByGenre(string genreName)
         {
             List<IMovie> movies = new List<IMovie>();
@@ -50,6 +51,7 @@ namespace backend_digital_home.Managers
             return movies;
         }
 
+        // Add genres to a movie
         private async Task<IMovie> AddGenresToMovie(IMovie movie)
         {
             IEnumerable<IGenre> genres = await _movieDataProvider.GetGenresForMovie(movie.Id);

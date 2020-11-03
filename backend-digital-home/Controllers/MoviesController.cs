@@ -32,6 +32,7 @@ namespace backend_digital_home.Controllers
             return _movieManager.GetMovieById(id);
         }
 
+        // GET api/<MoviesController>/genres/drama
         [HttpGet("genres/{genreName}")]
         public Task<IEnumerable<IMovie>> GetMoviesByGenre(string genreName)
         {

@@ -1,5 +1,5 @@
-﻿using backend_digital_home.Core.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using backend_digital_home.Core.Models;
 
 namespace backend_digital_home.Data.Models
 {

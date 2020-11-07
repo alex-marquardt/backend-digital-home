@@ -30,6 +30,9 @@ namespace backend_digital_home
             services.AddTransient<IMovie, Movie>();
             services.AddTransient<IMovieManager, MovieManager>();
             services.AddTransient<IMovieDataProvider, MovieDataProvider>();
+            services.AddTransient<IGenre, Genre>();
+            services.AddTransient<IGenreManager, GenreManager>();
+            services.AddTransient<IGenreDataProvider, GenreDataProvider>();
             services.AddControllers();
         }
 
